@@ -2,9 +2,43 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script>
+      function nightDayHandler(self) {
+        var target = document.querySelector('body');
+        var alist = document.querySelectorAll('a');
+        if (self.value === 'night') {
+          target.style.backgroundColor = 'black';
+          target.style.color = 'white';
+          self.value = 'day';
+          var i = 0;
+          while(i < alist.length) {
+  	        console.log(alist[i]);
+  	        alist[i].style.color = 'powderblue';
+  	        i++;
+          }
+        }
+        else {
+          target.style.backgroundColor = 'white';
+          target.style.color = 'black';
+          self.value = 'night';
+          var i = 0;
+          while(i < alist.length) {
+  	        console.log(alist[i]);
+  	        alist[i].style.color = 'blue';
+  	        i++;
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <h1>JavaScript</h1>
+    <a href="1.html">A</a>
+    <a href="1.html">B</a>
+    <a href="1.html">C</a>
+    <a href="1.html">D</a>
+    <br>
+    <br>
     <script>                  //javascript 사용
       document.write(1+1);  //글씨 출력, 동적
     </script>
@@ -20,27 +54,7 @@
     <br>
     <br>
     <input type="button" value="night" onclick="
-      document.querySelector('body').style.backgroundColor='black';
-      document.querySelector('body').style.color='white';
-    ">
-    <input type="button" value="day" onclick="
-      document.querySelector('body').style.backgroundColor='white';
-      document.querySelector('body').style.color='black';
-    ">
-    <br>
-    <br>
-    <input type="button" value="night" onclick="    //this: 자신 참조
-      var target = document.querySelector('body');
-      if (this.value === 'night') {
-        target.style.backgroundColor = 'black';
-        target.style.color = 'white';
-        this.value = 'day';
-      }
-      else {
-        target.style.backgroundColor = 'white';
-        target.style.color = 'black';
-        this.value = 'night';
-      }
+      nightDayHandler(this);
     ">
     <br>
   </body>
