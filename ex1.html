@@ -3,30 +3,38 @@
     <meta charset="utf-8">
     <title></title>
     <script>
+      var Links = {
+        setColor:function(color) {
+          var alist = document.querySelectorAll('a');
+          var i = 0;
+          while(i < alist.length) {
+            alist[i].style.color = color;
+            i++;
+          }
+        }
+      }
+      var Body = {
+        setColor:function(color) {
+          document.querySelector('body').style.color = color;
+        },
+        setBackGroundColor:function(color) {
+          document.querySelector('body').style.backgroundColor = color;
+        }
+      }
       function nightDayHandler(self) {
         var target = document.querySelector('body');
         var alist = document.querySelectorAll('a');
         if (self.value === 'night') {
-          target.style.backgroundColor = 'black';
-          target.style.color = 'white';
+          Body.setBackGroundColor('black');
+          Body.setColor('white');
           self.value = 'day';
-          var i = 0;
-          while(i < alist.length) {
-  	        console.log(alist[i]);
-  	        alist[i].style.color = 'powderblue';
-  	        i++;
-          }
+          Links.setColor('powderblue');
         }
         else {
-          target.style.backgroundColor = 'white';
-          target.style.color = 'black';
+          Body.setBackGroundColor('white');
+          Body.setColor('black');
           self.value = 'night';
-          var i = 0;
-          while(i < alist.length) {
-  	        console.log(alist[i]);
-  	        alist[i].style.color = 'blue';
-  	        i++;
-          }
+          Links.setColor('blue');
         }
       }
     </script>
@@ -57,5 +65,23 @@
       nightDayHandler(this);
     ">
     <br>
+    <br>
+    <script>
+      var coworkers = {
+        "programmer":"egoing",
+        "designer":"leezche"
+      };
+
+      coworkers.bookkeeper = 'duru';
+      coworkers["data scientist"] = 'taeho';
+
+      coworkers.showAll = function() {
+        for(var key in this) {
+          document.write(key+' : '+this[key]+'<br>');
+        }
+      }
+
+      coworkers.showAll();
+    </script>
   </body>
 </html>
