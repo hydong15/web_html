@@ -8,12 +8,6 @@
   </head>
   <body>
     <h1><a href="ex1.html">JavaScript</a></h1>
-    <a href="ex2.html">A</a>
-    <a href="ex3.html">B</a>
-    <a href="ex4.html">C</a>
-    <a href="index.html">HOME</a>
-    <br>
-    <br>
     <script>                  //javascript 사용
       document.write(1+1);    //글씨 출력, 동적
     </script>
@@ -33,6 +27,30 @@
     ">
     <br>
     <br>
+    <ol>
+      <li><a onclick="
+        fetch('ex2.html').then(function(response){
+          response.text().then(function(text){
+            document.querySelector('article').innerHTML = text;
+          })
+        });
+      ">ex2</a></li>
+      <li><a onclick="
+        fetch('ex3.html').then(function(response){
+          response.text().then(function(text){
+            document.querySelector('article').innerHTML = text;
+          })
+        });
+      ">ex3</a></li>
+      <li><a onclick="
+        fetch('ex4.html').then(function(response){
+          response.text().then(function(text){
+            document.querySelector('article').innerHTML = text;
+          })
+        });
+      ">ex4</a></li>
+      <li><a href="index.html">HOME</a></li>
+    </ol>
     <script>
       var coworkers = {
         "programmer":"egoing",
@@ -50,5 +68,10 @@
 
       coworkers.showAll();
     </script>
+    <br>
+    <br>
+    <article>
+
+    </article>
   </body>
 </html>
