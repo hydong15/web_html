@@ -28,50 +28,45 @@
     <br>
     <br>
     <ol>
-      <li><a onclick="
-        fetch('ex2.html').then(function(response){
-          response.text().then(function(text){
-            document.querySelector('article').innerHTML = text;
-          })
-        });
-      ">ex2</a></li>
-      <li><a onclick="
-        fetch('ex3.html').then(function(response){
-          response.text().then(function(text){
-            document.querySelector('article').innerHTML = text;
-          })
-        });
-      ">ex3</a></li>
-      <li><a onclick="
-        fetch('ex4.html').then(function(response){
-          response.text().then(function(text){
-            document.querySelector('article').innerHTML = text;
-          })
-        });
-      ">ex4</a></li>
+      <li><a href="#!ex2" onclick="fetchPage('ex2.html')">ex2</a></li>
+      <li><a href="#!ex3" onclick="fetchPage('ex3.html')">ex3</a></li>
+      <li><a href="#!ex4" onclick="fetchPage('ex4.html')">ex4</a></li>
       <li><a href="index.html">HOME</a></li>
     </ol>
-    <script>
-      var coworkers = {
-        "programmer":"egoing",
-        "designer":"leezche"
-      };
-
-      coworkers.bookkeeper = 'duru';
-      coworkers["data scientist"] = 'taeho';
-
-      coworkers.showAll = function() {
-        for(var key in this) {
-          document.write(key+' : '+this[key]+'<br>');
-        }
-      }
-
-      coworkers.showAll();
-    </script>
-    <br>
-    <br>
     <article>
 
     </article>
+    <script>
+    var coworkers = {
+      "programmer":"egoing",
+      "designer":"leezche"
+    };
+
+    coworkers.bookkeeper = 'duru';
+    coworkers["data scientist"] = 'taeho';
+
+    coworkers.showAll = function() {
+      for(var key in this) {
+        document.write(key+' : '+this[key]+'<br>');
+      }
+    }
+
+    coworkers.showAll();
+
+    function fetchPage(name) {
+      fetch(name).then(function(response){
+        response.text().then(function(text){
+          document.querySelector('article').innerHTML = text;
+        })
+      });
+    }
+
+    if(location.hash) {
+      fetchPage(location.hash.substr(2));
+    }
+    else {
+      // Fragement doesn't exist
+    }
+    </script>
   </body>
 </html>
