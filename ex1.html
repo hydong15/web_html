@@ -7,7 +7,7 @@
     <script src='colors.js'></script>
   </head>
   <body>
-    <h1><a href="ex1.html">JavaScript</a></h1>
+    <h1><a href="#!welcome">AJAX</a></h1>
     <script>                  //javascript 사용
       document.write(1+1);    //글씨 출력, 동적
     </script>
@@ -22,16 +22,13 @@
     <input type="text" onkeydown="alert('key down!')">
     <br>
     <br>
-    <input type="button" value="night" onclick="
+    <input id="night_day" type="button" value="night" onclick="
       nightDayHandler(this);
     ">
     <br>
     <br>
-    <ol>
-      <li><a href="#!ex2" onclick="fetchPage('ex2.html')">ex2</a></li>
-      <li><a href="#!ex3" onclick="fetchPage('ex3.html')">ex3</a></li>
-      <li><a href="#!ex4" onclick="fetchPage('ex4.html')">ex4</a></li>
-      <li><a href="index.html">HOME</a></li>
+    <ol id="nav">
+
     </ol>
     <article>
 
@@ -54,8 +51,8 @@
     coworkers.showAll();
 
     function fetchPage(name) {
-      fetch(name).then(function(response){
-        response.text().then(function(text){
+      fetch(name).then(function(response) {
+        response.text().then(function(text) {
           document.querySelector('article').innerHTML = text;
         })
       });
@@ -65,8 +62,14 @@
       fetchPage(location.hash.substr(2));
     }
     else {
-      // Fragement doesn't exist
+      fetchPage('welcome.html');
     }
+
+    fetch('list.html').then(function(response) {
+      response.text().then(function(text) {
+        document.querySelector('#nav').innerHTML = text;
+      })
+    });
     </script>
   </body>
 </html>
